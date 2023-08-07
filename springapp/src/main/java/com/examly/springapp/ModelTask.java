@@ -1,46 +1,46 @@
 package com.examly.springapp;
-import java.util.Optional;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-import org.springframework.beans.factory.annotation.Autowired;
+@Entity
+public class ModelTask {
+    @Id
+    int taskId;
+    String taskHolderName;
+    String taskDate;
+    String taskName;
+    public int getTaskId() {
+        return taskId;
+    }
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
+    }
+    public String getTaskHolderName() {
+        return taskHolderName;
+    }
+    public void setTaskHolderName(String taskHolderName) {
+        this.taskHolderName = taskHolderName;
+    }
+    public String getTaskDate() {
+        return taskDate;
+    }
+    public void setTaskDate(String taskDate) {
+        this.taskDate = taskDate;
+    }
+    public String getTaskName() {
+        return taskName;
+    }
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+    public String getTaskStatus() {
+        return taskStatus;
+    }
+    public void setTaskStatus(String taskStatus) {
+        this.taskStatus = taskStatus;
+    }
+    String taskStatus;
+   
 
-import org.springframework.stereotype.Service;
-import java.util.*;
-
-@Service
-public class ServiceClass{
-    @Autowired
-    Respository rep;
-    public ModelTask addTask(ModelTask mv)
-    {
-        rep.save(mv);
-        return mv;
-    }
-    public Optional<ModelTask> getTaskById(int id)
-    {
-       
-        return rep.findById(id);
-    }
-   public List<ModelTask> findAllTask()
-    {
-        return rep.findAll();
-    }
-    public void deleteTask(int id)
-    {
-        rep.deleteById(id);
-    }
-    public ModelTask findByName(String name)
-    {
-        List<ModelTask> list=rep.findAll();
-        for(int i=0;i<list.size();i++)
-        {
-           String str=list.get(i).taskHolderName;
-           if(str.equals(name))
-           {
-           return list.get(i);
-           }
-           
-        }
-        return null;
-    }
-
+    
 }
